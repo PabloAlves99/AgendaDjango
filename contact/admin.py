@@ -6,7 +6,7 @@ from contact import models
 @admin.register(models.Contact)
 class ContactAdmin(admin.ModelAdmin):
     list_display = 'id', 'first_name', 'last_name', 'phone',
-    ordering = 'first_name',
+    ordering = 'id',
     # list_filter = 'created_date',
     search_fields = 'id', 'first_name', 'last_name',
     list_per_page = 10
@@ -18,4 +18,4 @@ class ContactAdmin(admin.ModelAdmin):
 @admin.register(models.Category)
 class CategoryAdmin(admin.ModelAdmin):
     list_display = 'name',
-    ordering = 'name',
+    ordering = 'id',
