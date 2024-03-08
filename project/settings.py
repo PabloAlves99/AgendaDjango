@@ -1,3 +1,5 @@
+# Flake8: noqa: E731
+# type: ignore
 """
 Django settings for project project.
 
