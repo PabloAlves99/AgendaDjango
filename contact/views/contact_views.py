@@ -37,7 +37,8 @@ def search(request):
 
     context = {
         'contacts': contacts,
-        'site_title': 'Contatos - '
+        'site_title': 'Contatos - ',
+        'search_value': search_value,
     }
 
     return render(
@@ -56,7 +57,7 @@ def contact(request, contact_id):
     contact_name = f'{single_contact.first_name} {single_contact.last_name} - '
     context = {
         'contact': single_contact,
-        'site_title': contact_name,
+        'site_title': contact_name
     }
 
     return render(

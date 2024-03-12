@@ -1,30 +1,31 @@
 {% extends "global/base.html" %}
 
 {% block content %}
-    <div class="responsive-table">
-        <table class="contacts-table">
-            <caption class="table-caption">
-                Contacts
-            </caption>
-
-            <thead>
-                <tr class="table-row table-row-header">
-                    <th class="table-header">ID</th>
-                    <th class="table-header">FIRST NAME</th>
-                    <th class="table-header">LAST NAME</th>
-                    <th class="table-header">PHONE</th>
-                    <th class="table-header">E-MAIL</th>
-                </tr>
-            </thead>
-            
-            <tbody>
-                {% for contact in contacts %}
-                    <tr class="table-row">
-                        <td class="table-cel">
-                            <a class="table-link"\
-                             href="{% url "contact:contact" contact.id%}">
-                                {{contact.id}}
-                            </a>
+{% if contacts %}
+<div class="responsive-table">
+    <table class="contacts-table">
+        <caption class="table-caption">
+            Contacts
+        </caption>
+        
+        <thead>
+            <tr class="table-row table-row-header">
+                <th class="table-header">ID</th>
+                <th class="table-header">FIRST NAME</th>
+                <th class="table-header">LAST NAME</th>
+                <th class="table-header">PHONE</th>
+                <th class="table-header">E-MAIL</th>
+            </tr>
+        </thead>
+        
+        <tbody>
+            {% for contact in contacts %}
+            <tr class="table-row">
+                <td class="table-cel">
+                    <a class="table-link"\
+                    href="{% url "contact:contact" contact.id%}">
+                    {{contact.id}}
+                </a>
                         </td>
                         <td class="table-cel">
                             {{contact.first_name}}
@@ -39,8 +40,16 @@
                             {{contact.email}}
                         </td>
                     </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+                    {% endfor %}
+                </tbody>
+            </table>
     </div>
+
+{% else %}
+   <div class="single-contact">
+      <h1 class="single-contact-name">
+        Nenhum contato encontrado.
+      </h1>
+    </div> 
+{% endif %}
 {% endblock content %}
