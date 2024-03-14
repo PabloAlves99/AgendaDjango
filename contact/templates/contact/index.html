@@ -1,7 +1,7 @@
 {% extends "global/base.html" %}
 
 {% block content %}
-{% if contacts %}
+{% if page_obj %}
 <div class="responsive-table">
     <table class="contacts-table">
         <caption class="table-caption">
@@ -19,7 +19,7 @@
         </thead>
         
         <tbody>
-            {% for contact in contacts %}
+            {% for contact in page_obj %}
             <tr class="table-row">
                 <td class="table-cel">
                     <a class="table-link"\
@@ -44,7 +44,27 @@
                 </tbody>
             </table>
     </div>
+    {% if page_obj %}
+        <div class="pagination">
+            <span class="step-links">
+            {% if page_obj.has_previous %}
+                <a href="?page=1&q={{ request.GET.q.strip }}">&laquo; first</a>
+                <a href="?page={{ page_obj.previous_page_number }}&q={{ request.GET.q.strip }}">previous</a>
+            {% endif %}
 
+            <span class="current">
+                Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+            </span>
+
+            {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}&q={{ request.GET.q.strip }}">next</a>
+                <a href="?page={{ page_obj.paginator.num_pages }}&q={{ request.GET.q.strip }}">last &raquo;</a>
+            {% endif %}
+            </span>
+        </div>
+
+    {% endif %}
+    
 {% else %}
    <div class="single-contact">
       <h1 class="single-contact-name">
