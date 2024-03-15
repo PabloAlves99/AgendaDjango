@@ -1,20 +1,21 @@
-from django.shortcuts import render, get_object_or_404, redirect
-from django.db.models import Q
-from django.core.paginator import Paginator
-from contact.models import Contact
-# from django.http import Http404
+from django.shortcuts import render
+from contact.forms import ContactForm
 
 
 def create(request):
-    # contacts = Contact.objects.filter(show=True).order_by('-id')
+    if request.method == 'POST':
+        context = {
+            'form': ContactForm(data=request.POST)
+        }
 
-    # paginator = Paginator(contacts, 10)
-    # page_number = request.GET.get("page")
-    # page_obj = paginator.get_page(page_number)
+        return render(
+            request,
+            'contact/create.html',
+            context,
+        )
 
     context = {
-        # 'page_obj': page_obj,
-        # 'site_title': 'Contatos - '
+        'form': ContactForm()
     }
 
     return render(
