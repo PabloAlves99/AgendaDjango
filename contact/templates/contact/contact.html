@@ -12,4 +12,11 @@
         <p><b>Description:</b> {{ contact.description }}</p>
         <p><b>Category:</b> {{ contact.category.name }}</p>
     </div>
+
+    <div class="contact-links">
+        <a href="{% url "contact:update" contact.id %}" class="btn btn-links">Update</a>
+        <form action="" method="post">
+            <button class="btn btn-links btn-delete" type="submit">Delete</button>
+        </form>
+    </div>
 {% endblock content %}
