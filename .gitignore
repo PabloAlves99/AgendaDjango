@@ -134,4 +134,4 @@ GitHub.sublime-settings
 .vscode/
 
 # Settings
-*/local_settings.py
+project/local_settings.py
